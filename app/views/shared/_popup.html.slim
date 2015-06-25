@@ -1,0 +1,12 @@
+- options = { role: 'dialog', aria: { labelledby: 'modal_label', hidden: true } }
+- options.deep_merge!(modal_options) if defined?(modal_options)
+.popup-wrapper
+  .modal.fade { *options }
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close aria-hidden='true' data-dismiss='modal' aria-label='Close'
+            span.sr-only aria-hidden='true' &times;
+          h4 class='modal-title' id='modal_label'= header
+        .modal-body
+          = body

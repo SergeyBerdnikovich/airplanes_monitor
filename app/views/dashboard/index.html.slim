@@ -1,0 +1,6 @@
+.col-md-6
+  = link_to 'Add new', new_airplane_path, remote: true, class: 'btn btn-primary btn-sm'
+
+  #airplanes
+    = render 'airplanes/grid', airplanes: @airplanes
+

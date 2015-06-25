@@ -1,0 +1,7 @@
+<% form = render('form') %>
+
+var popup = $('<%= j render('shared/popup', header: 'New airplane!',
+                                            body: form,
+                                            modal_options: { id: 'new_airplane' }) %>').appendTo('body');
+popup.find('.modal').modal();
+

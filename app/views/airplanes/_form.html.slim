@@ -1,0 +1,4 @@
+= simple_form_for @airplane, as: 'airplane', url: airplanes_path, remote: true do |f|
+  = f.input :name
+
+  = f.submit 'Create', class: 'btn btn-primary btn-sm'
