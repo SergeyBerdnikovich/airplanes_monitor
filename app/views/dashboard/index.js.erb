@@ -1,2 +1,3 @@
 $('.modal').modal('hide');
 $('<%= j render('airplanes/grid', airplanes: @airplanes) %>').replaceAll('#airplanes');
+$('<%= j render('fly_queue/grid', fly_queue: @fly_queue) %>').replaceAll('#fly_queue');

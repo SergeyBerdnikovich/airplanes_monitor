@@ -1,0 +1,12 @@
+#fly_queue
+  table.table
+    tr
+      td id
+      td Name
+      td Status
+    - fly_queue.each do |queue_element|
+      tr
+        td = queue_element.id
+        td = queue_element.airplane.name
+        td = queue_element.airplane.status
+

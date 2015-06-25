@@ -1,15 +1,16 @@
-table.table
-  tr
-    td id
-    td Name
-    td Status
-    td Actions
-  - airplanes.each do |airplane|
+#airplanes
+  table.table
     tr
-      td = airplane.id
-      td = airplane.name
-      td = airplane.status
-      td = link_to 'Aprove fly', '#', class: 'btn btn-info btn-sm'
+      td id
+      td Name
+      td Status
+      td Actions
+    - airplanes.each do |airplane|
+      tr
+        td = airplane.id
+        td = airplane.name
+        td = airplane.status
+        td = approve_button_for airplane
 
-.pagination
-  = paginate airplanes
+  .pagination
+    = paginate airplanes

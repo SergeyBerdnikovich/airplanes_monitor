@@ -13,6 +13,6 @@ class AirplanesController < ApplicationController
   private
 
   def permitted_params
-    params.require(:airplane).permit(:name)
+    params.require(:airplane).permit(:name).merge(status: AirplaneStatus::HANGAR)
   end
 end
