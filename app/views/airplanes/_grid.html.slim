@@ -9,7 +9,7 @@
       tr
         td = airplane.id
         td = airplane.name
-        td = airplane.status
+        td id="status_#{airplane.id}" = airplane.status
         td = approve_button_for airplane
 
   .pagination

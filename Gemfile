@@ -28,6 +28,8 @@ gem 'simple_form'
 gem 'bootstrap-sass'
 gem 'kaminari'
 gem 'enumerate_it'
+gem 'sidekiq'
+gem 'pusher'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

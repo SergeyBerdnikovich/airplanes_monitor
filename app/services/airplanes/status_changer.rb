@@ -21,7 +21,7 @@ class Airplanes::StatusChanger
     new_status_idx = statuses.index new_status
 
     if current_status_idx > new_status_idx || (new_status_idx - current_status_idx) != 1
-      raise Exception.new('Incorrect status priority!')
+      raise Exception.new("Incorrect status priority: id #{airplane.id} from #{current_status} -> to #{new_status}")
     end
   end
 

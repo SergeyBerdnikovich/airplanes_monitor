@@ -1,7 +1,34 @@
-.col-md-6
-  = link_to 'Add new', new_airplane_path, remote: true, class: 'btn btn-primary btn-sm'
+.col-md-12
+  .col-md-6
+    h1 Runway
+    = render 'runway', airplane_on_runway: @airplane_on_runway
+.col-md-12
+  .col-md-6
+    h1 Airplanes
+    = render 'airplanes/grid', airplanes: @airplanes
+    = link_to 'Add new', new_airplane_path, remote: true, class: 'btn btn-primary btn-sm'
 
-  = render 'airplanes/grid', airplanes: @airplanes
+  .col-md-6
+    h1 Queue
+    = render 'fly_queue/grid', fly_queue: @fly_queue
 
-.col-md-6
-  = render 'fly_queue/grid', fly_queue: @fly_queue
+= javascript_include_tag "//js.pusher.com/2.2/pusher.min.js"
+
+javascript:
+  (function worker() {
+    $.ajax({
+      url: "#{check_fly_queue_index_url}",
+      dataType: 'script',
+      complete: function() {
+        setTimeout(worker, 5000);
+      }
+    });
+  })();
+
+  var pusher = new Pusher("#{Pusher.key}");
+  var channel = pusher.subscribe('airplanes');
+
+  channel.bind('fly', function(data) {
+    $('#airplanes #status_' + data['airplane_id']).html('fly');
+    $('#airplane_on_runway_' + data['airplane_id'] + ' td').html('');
+  });

@@ -1,0 +1,10 @@
+#runway
+  table.table
+    tr
+      td id
+      td Name
+      td Status
+    tr id="airplane_on_runway_#{airplane_on_runway.try(:id)}"
+      td = airplane_on_runway.try(:id)
+      td = airplane_on_runway.try(:name)
+      td = airplane_on_runway.try(:status)

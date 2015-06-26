@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root 'dashboard#index'
 
   resources :airplanes, only: [:new, :create]
-  resources :fly_queue, only: :create
+  resources :fly_queue, only: :create do
+    get :check, on: :collection
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

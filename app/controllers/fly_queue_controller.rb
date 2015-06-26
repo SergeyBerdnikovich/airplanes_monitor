@@ -5,6 +5,10 @@ class FlyQueueController < ApplicationController
     redirect_to root_path
   end
 
+  def check
+    FlyQueue::Checker.new.call ? redirect_to(root_path) : head(:ok)
+  end
+
   private
 
   def permitted_params
