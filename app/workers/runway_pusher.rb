@@ -10,9 +10,11 @@ class RunwayPusher
   def perform
     @airplane = Airplane.on_runway.first
 
-    Pusher.trigger('airplanes', 'fly', airplane_data)
+    if airplane
+      Pusher.trigger('airplanes', 'fly', airplane_data)
 
-    Airplanes::StatusChanger.new(airplane, AirplaneStatus::FLY).change! if airplane
+      Airplanes::StatusChanger.new(airplane, AirplaneStatus::FLY).change!
+    end
   end
 
   def airplane_data
