@@ -2,3 +2,4 @@ $('.modal').modal('hide');
 $('<%= j render('airplanes/grid', airplanes: @airplanes) %>').replaceAll('#airplanes');
 $('<%= j render('fly_queue/grid', fly_queue: @fly_queue) %>').replaceAll('#fly_queue');
 $('<%= j render('runway', airplane_on_runway: @airplane_on_runway) %>').replaceAll('#runway');
+$('<%= j render('history_flight/grid', history_flight: @history_flight) %>').replaceAll('#history_flight');

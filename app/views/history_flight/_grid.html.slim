@@ -1,0 +1,14 @@
+#history_flight
+  table.table
+    tr
+      td id
+      td Name
+      td Status from
+      td Status to
+    - history_flight.each do |airplane_id, history_group|
+      - history_group.each do |history|
+        tr
+          td = airplane_id
+          td = history.airplane.name
+          td = history.from
+          td = history.to

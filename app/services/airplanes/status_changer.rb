@@ -8,10 +8,14 @@ class Airplanes::StatusChanger
   end
 
   def change!
-    check_statuses!
+    ActiveRecord::Base.transaction do
+      check_statuses!
 
-    airplane.status = new_status
-    airplane.save!
+      airplane.status = new_status
+      airplane.save!
+
+      History::StatusWriter.new(airplane, current_status, new_status).write!
+    end
   end
 
   private

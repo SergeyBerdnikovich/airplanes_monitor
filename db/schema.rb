@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150625202739) do
+ActiveRecord::Schema.define(version: 20150626162125) do
 
   create_table "airplanes", force: :cascade do |t|
     t.string   "name",       default: "", null: false
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 20150625202739) do
     t.integer  "airplane_id", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "history_flight", force: :cascade do |t|
+    t.integer  "airplane_id",              null: false
+    t.string   "from",        default: "", null: false
+    t.string   "to",          default: "", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
 end

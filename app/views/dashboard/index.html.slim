@@ -2,6 +2,11 @@
   .col-md-6
     h1 Runway
     = render 'runway', airplane_on_runway: @airplane_on_runway
+
+  .col-md-6
+    h1 Queue
+    = render 'fly_queue/grid', fly_queue: @fly_queue
+
 .col-md-12
   .col-md-6
     h1 Airplanes
@@ -9,8 +14,8 @@
     = link_to 'Add new', new_airplane_path, remote: true, class: 'btn btn-primary btn-sm'
 
   .col-md-6
-    h1 Queue
-    = render 'fly_queue/grid', fly_queue: @fly_queue
+    h1 History
+    = render 'history_flight/grid', history_flight: @history_flight
 
 = javascript_include_tag "//js.pusher.com/2.2/pusher.min.js"
 
@@ -29,6 +34,14 @@ javascript:
   var channel = pusher.subscribe('airplanes');
 
   channel.bind('fly', function(data) {
-    $('#airplanes #status_' + data['airplane_id']).html('fly');
-    $('#airplane_on_runway_' + data['airplane_id'] + ' td').html('');
+    var row = '<tr>\
+                 <td>' + data['id'] + '</td>\
+                 <td>' + data['name'] + '</td>\
+                 <td>' + data['current_status'] + '</td>\
+                 <td>' + data['new_status'] + '</td>\
+               </tr>'
+
+    $('#airplanes #status_' + data['id']).html(data['new_status']);
+    $('#airplane_on_runway_' + data['id'] + ' td').html('');
+    $('#history_flight tbody').append(row);
   });
